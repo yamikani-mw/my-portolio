@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Smart CLient System</title>
+        <style>
+            body {
+                font-family: arial;
+                background: #f4f4f4;
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 600px;
+                margin: auto;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px #ccc;
+            }
+            h2 {
+                text-align: center;
+
+            }
+            input, button {
+                padding: 10px;
+                margin: 5px;
+                width: 95%;
+
+            }
+            button {
+                background: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .client {
+                background: #eee;
+                padding: 10px;
+                margin-top: 5px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <Div class="container" id="loginpage">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="username">
+            <input type="password" id="password" placeholder="password">
+            <button onclick="login()">Login</button>
+
+        </Div>
+        <Div class="container" id="appPage" style="display: none;">
+            <h2>Client Management System</h2>
+            <input type="text" id="name" placeholder="Client Name">
+            <input type="text" id="phone" placeholder="phone">
+            <button onclick="addClient()">Add Client</button>
+
+            <input type="text" id="search" placeholder="search....."
+            onkeyup="seachClient()">
+        </Div>
+
+        <Div id="clientList"></Div>
+
+        <script>
+            let client =
+    JSON.parse(localStorage.getItem("clients"))  || [];
+    function login() {
+        let user =
+        document.getElementById("username") .value;
+        let pass =
+        document.getElementById("password").value;
+
+        if(user === "admin" && pass === "1234") {
+            document.getElementById("appPage").style.display = "block";
+            displayCLient();
+        } else {
+            alert("Invalid login");
+        }
+    }
+    function saveData() {
+        localStorage.getItem("clients", JSON.stringify(client));
+    }
+
+    function addClient()
+        {
+let name =
+document.getElementById("name").value;
+let phone =
+document.getElementById("phone").value;
+if(name === "" || phone === "") {
+    alert("Fill all fields");
+    return;
+}
+clients.push({name, phone});
+saveData();
+displayCLients();
+        }
+
+        function seachClient() {
+            let value =
+            document.getElementById("search").value.toLowerCase();
+
+            let filtered =addClientclient.filter(c =>
+
+            c.name.toLowerCase().includes(value)
+            ||
+            c.phone.includes(value));
+            displayCLient(filtered);
+        }
+        </script>
+    </body>
+    <h4>I developed a smart client Management System that helps business store and manage customer information digitally.itincludes authentication,search functionality and persistent storage.i focused on userbility and solving real business problemss.</h4>
+<h5><marquer>&copy yammie 2026 foundtion. all rights reseverd</h5></marquer>
+<a href="yam.jpg"></a>
+    </html>
